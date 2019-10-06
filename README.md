@@ -1,7 +1,9 @@
 # Guitar Tune Player
 
-A music player that utilizes Guitar37 from the second assignment to 
+A music player that utilizes Guitar37 from Guitar Hero, the second assignment to 
 [University of Washington CSE 143](https://www.cs.washington.edu/143).
+
+![Guitar Tune Player v0.0.1 on macOS](Screenshot.png)
 
 ## How to Use?
 
