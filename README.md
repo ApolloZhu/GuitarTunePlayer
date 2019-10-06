@@ -3,8 +3,8 @@
 A music player that utilizes Guitar37 from Guitar Hero, the second assignment to 
 [University of Washington CSE 143](https://www.cs.washington.edu/143).
 
-![Guitar Tune Player v0.0.1 on macOS](Screenshot.png)
-
+<img src="./Screenshot.png" width="50%" align="right">
+ 
 ## How to Use?
 
 Download [GuitarTunePlayer.java](https://raw.githubusercontent.com/ApolloZhu/GuitarTunePlayer/master/src/GuitarTunePlayer.java)
