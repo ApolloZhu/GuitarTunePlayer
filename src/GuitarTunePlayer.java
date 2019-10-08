@@ -31,6 +31,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FilenameFilter;
 import java.util.List;
 import java.util.*;
 import java.util.prefs.BackingStoreException;
@@ -51,7 +52,7 @@ import java.util.prefs.Preferences;
  * https://github.com/ApolloZhu/GuitarTunePlayer
  */
 public class GuitarTunePlayer {
-    public static final String VERSION = "0.0.1";
+    public static final String VERSION = "0.0.2";
 
     public static void main(String[] args) {
         GuitarTunePlayerController player = new GuitarTunePlayerController(selectSongs());
@@ -67,7 +68,11 @@ public class GuitarTunePlayer {
 
     private static File[] selectSongs() {
         File folder = getFolder();
-        File[] songs = folder.listFiles();
+        File[] songs = folder.listFiles(new FilenameFilter() {
+            public boolean accept(File dir, String name) {
+                return !name.equals(".DS_Store");
+            }
+        });
         if (songs == null || songs.length <= 0) {
             UserDefaults.clear();
             return selectSongs();
@@ -133,9 +138,8 @@ class GuitarTunePlayerController implements GuitarPlayerUpdateHandler, GuitarTun
     }
 
     private void setSongs(File[] unorderedSongs) {
-        List<File> names = Arrays.asList(unorderedSongs);
-        Collections.sort(names, CASE_INSENSITIVE_ORDER);
-        songs = names.toArray(new File[]{});
+        songs = unorderedSongs;
+        Arrays.sort(songs, CASE_INSENSITIVE_ORDER);
     }
 
     private void playLastPlayedSong() {
